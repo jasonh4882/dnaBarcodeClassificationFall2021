@@ -1,0 +1,68 @@
+
+for m in range(1, 11617):
+    sequence = nuc_train.iloc[m,1]
+    if isnan(sequence):
+        l = len(sequence)
+        for i in range(0, l):
+            for j in range(0, 5460):
+                series = sequence[i]
+                if "-" == series:
+                    dashCount = dashCount + 1
+                else:
+                    temp = existsTR[j, m]
+                    if len(tokens[j]) == 1:
+                        if (tokens[j] == series):
+                            temp = existsTR[j, m]
+                            existsTR[j, m] = temp + 1
+                    if l-i > 1 and len(tokens[j]) == 2:
+                        series = sequence[i:i+1]
+                        if tokens[j] == series:
+                            existsTR[j, m] = temp + 1
+                    if l-i > 2 and len(tokens[j]) == 3:
+                        series = sequence[i:i+2]
+                        if tokens[j] == series:
+                            existsTR[j, m] = temp + 1
+                    if l-i > 3 and len(tokens[j]) == 4:
+                        series = sequence[i:i+3]
+                        if tokens[j] == series:
+                            existsTR[j, m] = temp + 1
+                            
+                            
+                            ftrRunning = 0
+temp = "Idle"
+printClock = 1
+ftrStatus = [False] * wCount
+future = [executor.submit(testFunc, seqNum) for seqNum in range(1,11)]
+print("Runtime: {} Min {} Sec".format(int(tClock / 60), tClock % 60))
+print("Status:")
+for ftr in range(0,wCount):
+    if future[ftr].running():
+        temp = "Process started"
+        ftrRunning += 1
+        ftrStatus[ftr] = True
+    else:
+        temp = "Failed to start process!"
+    print("\tThread {}: {}".format(ftr, temp))
+while ftrRunning > 0:
+    ftrRunning = wCount
+    sleep(printClock)
+    tClock += printClock
+    print("Runtime: {} Min {} Sec".format(int(tClock / 60), tClock % 60))
+    print("Thread #",end="\t")
+    for ftr in range(0,wCount):
+        print(ftr,end="\t")
+    print("\n\t",end="\t")
+    for ftr in range(0,wCount):
+        if ftrStatus[ftr]:
+            if future[ftr].running():
+                temp = "Busy"
+            else:
+                temp = "Idle"
+                ftrStatus[ftr] = False
+                ftrRunning -= 1
+        else:
+            ftrRunning -= 1
+            temp = "Idle"
+        print(temp, end="\t")
+    print("\nActive Threads: {}\n".format(ftrRunning))
+print("done")
