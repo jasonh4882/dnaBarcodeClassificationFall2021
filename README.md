@@ -4,7 +4,7 @@
 
 The goal of this project was to take in a DNA barcode and then make a classification as to what species the sample belongs. There are some species in the test data that are "new species" not seen in the training data. Such a sample should be classified with a label of -1. This was done as a part of a Kaggle competition that can be found [here](https://www.kaggle.com/c/dna-barcode-classification/overview).
 
-As a part of the competition, 4 files were provided: a sample submission CSV, test features CSV, train features CSV, and train labels CSV. The training features and corresponding labels were to be used as the basis for editmating the test label for each set of test features. 
+As a part of the competition, 4 files were provided: a sample submission CSV, test features CSV, train features CSV, and train labels CSV. The training features and corresponding labels were to be used as the basis for determining the test label for each set of test features. 
 
 The primary method used in this project to identify the test labels was k-mer based feature engineering combined with a random forest. This was accomplished using the Python programming language primarily inside JupyterLab notebooks. 
 
@@ -12,7 +12,7 @@ The primary method used in this project to identify the test labels was k-mer ba
 
 In total, only one submission was made. This was primarily due to the time investment that this one submission took. Since there was only one to choose from, this submission was used for both the public and private leaderboards. A breakdown of the methods to generate this submission can be found the [methodWriteup.md](/methodWriteup.md) file.
     
-***NOTE**: For clarification, Kaggle has two leaderboards. The public one can be seen at any time while the private one can only be seen after the competition is over. The private leaderboard also only allows two submissions to be counted. The leaderboards are each based on only around half of the whole dataset. This allows for feedback on the approximate preformance of a model without revealing the data that will actually be tested against. This discourages manual edits of a submission and other inproper submission methods*
+***NOTE**: For clarification, Kaggle has two leaderboards. The public one can be seen at any time while the private one can only be seen after the competition is over. The private leaderboard also only allows two submissions to be counted. The leaderboards are each based on only around half of the whole dataset. This allows for feedback on the approximate performance of a model without revealing the data that will actually be tested against. This discourages manual edits of a submission and other improper submission methods*
     
 #### Comparitive Performance ####
 
@@ -22,7 +22,7 @@ Compared to the other submissions made by all teams, the best model submitted by
 
 *Complete public leaderboard CSV can be found [here](/dna-barcode-classification-publicleaderboard.csv)*
 
-- **Private Leaderboard**: An accuracy of **96.677%** did **4th** best on the private board, moving up one position from that of the public board. Submissions by [Yunyi Li](https://www.kaggle.com/yunyili315), [Yanling Pan](https://www.kaggle.com/giraffecolor), and [Stuart Livingston](https://www.kaggle.com/stuartlivingston) achieved a higher accuracy of **96.797%**, **97.664%**, and **97.664%** respectively. Outside the range of significant digits  by the leaderboard, Stuart Livingston was the most accurate by less than one thousanth of a percent. While the private did not do as well as the public in terms of raw score, the submission still did well compared to other scores. The submission fell on the **76th percentile** of all submissions.
+- **Private Leaderboard**: An accuracy of **96.677%** did **4th** best on the private board, moving up one position from that of the public board. Submissions by [Yunyi Li](https://www.kaggle.com/yunyili315), [Yanling Pan](https://www.kaggle.com/giraffecolor), and [Stuart Livingston](https://www.kaggle.com/stuartlivingston) achieved a higher accuracy of **96.797%**, **97.664%**, and **97.664%** respectively. Outside the range of significant digits  by the leaderboard, Stuart Livingston was the most accurate by less than one thousandth of a percent. While the private did not do as well as the public in terms of raw score, the submission still did well compared to other scores. The submission fell on the **76th percentile** of all submissions.
 
 The top 10 private percentage scores were the following *(accuracy between 0 and 1)*:
 
